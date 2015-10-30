@@ -23,8 +23,12 @@
 int compile(FILE* p);
 int execute();
 
+unsigned int push(unsigned int a);
+unsigned int pop();
+
 unsigned short program[PROGRAM_SIZE];
 unsigned short jmp[PROGRAM_SIZE];
+unsigned short stack[STACK_SIZE];
 unsigned short data[DATA_SIZE];
 
 unsigned short sc;
@@ -84,15 +88,14 @@ int compile(FILE* p) {
 				if (sc == STACK_SIZE) {
 					return ERR_SF;
 				}
-				sc++;
-				jmp_pc = pc;
+				push(pc);
 				break;
 			case ']':
 				program[pc] = JMP_B;
 				if (sc == 0) {
 					return ERR_SE;
 				}
-				sc--;
+				jmp_pc = pop();
 				jmp[jmp_pc] = pc;
 				jmp[pc] = jmp_pc;
 				break;
@@ -136,7 +139,16 @@ int execute() {
 				break;
 			default: return ERR;
 		}
+		// printf("\t%u\t%u\t%u\t%u\n", pc, program[pc], ptr, data[ptr]);
 		pc++;
 	}
 	return SUCCESS;
+}
+
+unsigned int push(unsigned int a) {
+	return stack[++sc] = a;
+}
+
+unsigned int pop() {
+	return stack[sc--];
 }
