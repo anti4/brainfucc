@@ -1,24 +1,24 @@
 #include <stdio.h>
 
 #define PROGRAM_SIZE	4096
-#define STACK_SIZE		512
-#define DATA_SIZE		65535
+#define STACK_SIZE	512
+#define DATA_SIZE	65535
 
 #define END		0
-#define INC_P	1
-#define DEC_P	2
-#define INC_V	3
-#define DEC_V	4
+#define INC_P		1
+#define DEC_P		2
+#define INC_V		3
+#define DEC_V		4
 #define OUT		5
 #define IN		6
-#define JMP_F	7
-#define JMP_B	8
+#define JMP_F		7
+#define JMP_B		8
 
-#define SUCCESS	0
+#define SUCCESS		0
 #define ERR		1
-#define ERR_SE	2
-#define ERR_SF	3
-#define ERR_SNE	4
+#define ERR_SE		2
+#define ERR_SF		3
+#define ERR_SNE		4
 
 int compile(FILE* p);
 int execute();
