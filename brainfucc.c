@@ -50,14 +50,14 @@ int main(int argc, char const *argv[]) {
 			fprintf(stderr, "Error: stack already empty at command %u\n", pc+1);
 			break;
 		case ERR_SF:
-			fprintf(stderr, "Error: stack full at command %u\n", pc);
+			fprintf(stderr, "Error: stack full at command %u\n", pc+1);
 			break;
 		case ERR_SNE:
-			fprintf(stderr, "Error: stack not empty at the end of the program (%u)\n", pc);
+			fprintf(stderr, "Error: stack not empty at the end of the program (%u)\n", pc+1);
 			break;
 		case ERR:
 		default:
-			fprintf(stderr, "Error: at %u\n", pc);
+			fprintf(stderr, "Error: at %u\n", pc+1);
 			break;
 	}
 	return ERR;
